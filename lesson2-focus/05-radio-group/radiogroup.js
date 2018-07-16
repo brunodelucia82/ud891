@@ -22,8 +22,29 @@
 
     this.el.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
+  
+  RadioGroup.prototype.nextIdx = function() {
+    //let idx = focusedIdx;
+    if (this.focusedIdx === this.buttons.length - 1) {
+        this.focusedIdx = 0;
+    } else {
+        ++this.focusedIdx;
+    }
+    return this.focusedIdx;
+  }
+
+  RadioGroup.prototype.prevIdx = function() {
+    //let idx = focusedIdx;
+    if (this.focusedIdx === 0) {
+        this.focusedIdx = this.buttons.length - 1;
+    } else {
+        --this.focusedIdx;
+    }
+    return this.focusedIdx;
+  }
 
   RadioGroup.prototype.handleKeyDown = function(e) {
+      
     switch(e.keyCode) {
 
       case VK_UP:
@@ -31,7 +52,7 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        this.prevIdx();
 
         break;
 
@@ -42,7 +63,7 @@
 
         e.preventDefault();
 
-        // This seems like a good place to do some stuff :)
+        this.nextIdx();
 
         break;
       }
