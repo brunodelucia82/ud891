@@ -18,6 +18,7 @@ page('/:slug', function(context) {
   var newPage = document.querySelector('main [data-page='+slug+']');
   newMenuItem.classList.add('is-active');
   newPage.classList.add('is-active');
+  document.querySelector("div.is-active").querySelector("h2").focus();
 
 });
 
